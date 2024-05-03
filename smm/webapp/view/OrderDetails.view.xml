@@ -1,0 +1,121 @@
+<mvc:View
+    xmlns:smartform="sap.ui.comp.smartform"
+    xmlns:smarttable="sap.ui.comp.smarttable"
+    xmlns:table="sap.ui.table"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+    controllerName="smm.purchase.smm.controller.OrderDetails"
+    displayBlock="true"
+>
+    <IconTabBar
+        id="_IDGenIconTabBar1"
+        expanded="true"
+        class="sapUiResponsiveContentPadding"
+        select="onSelect"
+    >
+        <items>
+            <IconTabFilter
+                id="_IDGenIconTabFilter1"
+                text="Details"
+                key="Det"
+            >
+                <VBox
+                    id="_IDGenVBox1"
+                    class="sapUiSmallMargin"
+                >
+                    <smarttable:SmartTable
+                        id="_IDGenSmartTable1"
+                        enableExport="true"
+                        useVariantManagement="true"
+                        useTablePersonalisation="true"
+                        showRowCount="true"
+                        enableAutoBinding="true"
+                        class="sapUiResponsiveContentPadding"
+                        tableType="ResponsiveTable"
+                        enableAutoColumnWidth="true"
+                        demandPopin="true"
+                        initiallyVisibleFields="OrderID,ProductID,UnitPrice,Quantity,Discount"
+                        tableBindingPath="/results"
+                        entitySet="Order_Details"
+                    />
+                </VBox>
+            </IconTabFilter>
+            <IconTabFilter
+                id="_IDGenIconTabFilter2"
+                text="Employee"
+                key="Emp"
+            >
+                <Text
+                    id="_IDGenText1"
+                    text="OrderItemDeatils"
+                />
+                <smartform:SmartForm
+                    id="_IDGenSmartForm1"
+                    editTogglable="true"
+                    validationMode="Async"
+                />
+                <f:Form
+                    editable="true"
+                    id="form0"
+                >
+                    <f:formContainers>
+                        <f:FormContainer
+                            title="Title"
+                            id="container0"
+                        >
+                            <f:formElements>
+                                <f:FormElement
+                                    label="Employee Id"
+                                    id="element0"
+                                >
+                                    <f:fields>
+                                        <Text
+                                            text="{/EmployeeID}"
+                                            id="nameText"
+                                        />
+                                    </f:fields>
+                                </f:FormElement>                                
+                                 <f:FormElement
+                                    id="_IDGenFormElement3"
+                                    label="Full name"
+                                >
+                                    <f:fields>
+                                        <Text
+                                            id="_IDGenText3"
+                                            text="{
+                                                parts:[{path:'/FirstName'},{path:'/LastName'}],
+                                                formatter: '.Nameformatter.FullName'
+                                            }"
+                                        />
+                                    </f:fields>
+                                </f:FormElement>
+                                <f:FormElement id="_IDGenFormElement4"  label="Address">
+                                <f:fields>
+                                        <Text id="_IDGenText4" 
+                                            text="{
+                                                 parts:[{path:'/Address'},{path:'/City'},{path:'/Region'},
+                                                 {path:'/PostalCode'},{path:'/Country'}],
+                                                formatter: '.Nameformatter.Address'
+                                            }"/>
+                                </f:fields>
+                                </f:FormElement>
+                                <f:FormElement id="_IDGenFormElement5" label="Photo" >
+                                    <f:fields>
+                                      <Image id="_IDGenImage1" src="data:image/jpeg;base64," />
+                                    </f:fields>
+                                </f:FormElement>
+                            </f:formElements>
+                        </f:FormContainer>
+                    </f:formContainers>
+                    <f:layout>
+                        <f:ResponsiveGridLayout id="layout0" />
+                    </f:layout>
+                </f:Form>
+                <content />
+            </IconTabFilter>
+        </items>
+    </IconTabBar>
+</mvc:View>
